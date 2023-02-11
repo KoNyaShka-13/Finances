@@ -1,5 +1,4 @@
 'use strict';
-
 let money, time; //обьявляем переменные глобальными для удобства
 
 function start() {//Заворачиваем в функцию для того, чтобы код дальше не пошел, пока не выполнат первые условия
@@ -86,20 +85,40 @@ chooseExpenses();//Вызываем ее, чтобы пользователь м
 //}while (i < 2);
 
 
+function detectDayBudget() {
+    appData.moneyPerDay = (appData.budget / 30).toFixed(1);
+    detectDayBudget = appData.moneyPerDay;
+}
+detectDayBudget();
+//appData.moneyPerDay = (appData.budget / 30).toFixed(1);//Не забываем, что tofixed меняет переменную, он возвращает строковую переменную, но в данном случае это не важно, но необходимо ориентироваться в типах данных
 
-appData.moneyPerDay = (appData.budget / 30).toFixed(1);//Не забываем, что tofixed меняет переменную, он возвращает строковую переменную, но в данном случае это не важно, но необходимо ориентироваться в типах данных
+alert("Ежедневный бюджет:" + detectDayBudget);
 
-alert("Ежедневный бюджет:" + appData.moneyPerDay);
 
-if(appData.moneyPerDay < 100) {
-    console.log("Минимальный уровень достатка");
-}else if (appData.moneyPerDay > 100 && appData.moneyPerDay < 2000) {
-    console.log("Средний уровень достатка");
-}else if (appData.moneyPerDay > 2000) {
-    console.log("Высокий уровень достатка");
-}else {
-    console.log("Ошибка");
-};
+
+//if(appData.moneyPerDay < 100) {
+//    console.log("Минимальный уровень достатка");
+//}else if (appData.moneyPerDay > 100 && appData.moneyPerDay < 2000) {
+//    console.log("Средний уровень достатка");
+//}else if (appData.moneyPerDay > 2000) {
+//    console.log("Высокий уровень достатка");
+//}else {
+//    console.log("Ошибка");
+//};
+
+function detectLevel() {
+    if(appData.moneyPerDay < 100) {
+        console.log("Минимальный уровень достатка");
+    }else if (appData.moneyPerDay > 100 && appData.moneyPerDay < 2000) {
+        console.log("Средний уровень достатка");
+    }else if (appData.moneyPerDay > 2000) {
+        console.log("Высокий уровень достатка");
+    }else {
+        console.log("Ошибка");
+    };
+}
+
+detectLevel();
 
 function checkSavings() {
     if (appData.savings == true) {
@@ -111,3 +130,18 @@ function checkSavings() {
     }
 }
 checkSavings();
+
+function chooseOptExpenses() {
+    for (let i = 0; i < 3; i++) {
+        let a = prompt("Статья необязательных расходов?", ''),
+            b = prompt("Во сколько обойдется?", '');
+        
+        if ( ( typeof(a)) === 'string' && a.length < 50 ) {
+            console.log("done");//Тут указаны условия заполнения строк, то есть максимальная длина, что нельзя оставлять пустыми строки, установили условие, чтобы отмена не проходила, так как отмена равняется null
+           appData.expenses[a] = b;
+        } else {
+            i = i - 1;
+        }
+    };    
+}
+chooseOptExpenses();
