@@ -70,18 +70,7 @@ let appData = {
             }   
         };
     },
-    //chooseIncome: function() {
-    //    let items = prompt('Что приносит дополнительный доход? (Перечислите черз запятую)', '');
-    //    while (!isNaN(items)){
-    //        items = prompt('Что приносит дополнительный доход? (Перечислите черз запятую)', '');
-    //    }
-    //    appData.income = items.split(', ');//Чтобы строка превратилась в массив
-    //    appData.income.push(prompt('Может что-то еще?'));//Это на всякий случай, вдруг что-то забыли, пусть внесется это в конец массива
-    //    appData.income.sort();//Сортировка по алфавиту
-    //}
-};
-
-function chooseIncome() {
+    chooseIncome: function() {
     for (let i = 0; i < 1; i++) {
         let items = prompt('Что принесет вам дополнительный доход (Перечислите через запятую)?', '');
   
@@ -97,9 +86,28 @@ function chooseIncome() {
           i--;
         }
       }
-    };
+    }
+};
 
-chooseIncome();
+//function chooseIncome() {
+//    for (let i = 0; i < 1; i++) {
+//        let items = prompt('Что принесет вам дополнительный доход (Перечислите через запятую)?', '');
+//  
+//        if ((typeof (items)) === 'string' && items != '' && (typeof (items)) != null) {
+//          appData.income = items.split(', ');
+//          appData.income.push(prompt('Что может что-то еще?'));
+//          appData.income.sort();
+//          appData.income.forEach(function (item, i, income) {
+//            let n = 0; n = i + 1;
+//            console.log(n + ' - Способ доп. заработка: ' + item);
+//          });
+//        } else {
+//          i--;
+//        }
+//      }
+//    };
+//
+//chooseIncome();
 
 for (let key in appData) {
     console.log('Наша программа включает в себя данные:' + key + ': ' + appData[key]);
